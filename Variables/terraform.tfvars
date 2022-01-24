@@ -1,0 +1,1 @@
+vpc_name = "var_test"
