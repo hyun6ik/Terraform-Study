@@ -7,3 +7,14 @@ resource "local_file" "foo" {
   content = "Hello World!"
   filename = "${path.module}/foo.txt"
 }
+
+# 데이터를 읽을 용도
+data "local_file" "bar" {
+  filename = "${path.module}/bar.txt"
+}
+
+# 데이터를 출력
+# file_bar 라는 Object 생성
+output "file_bar" {
+  value = data.local_file.bar
+}
