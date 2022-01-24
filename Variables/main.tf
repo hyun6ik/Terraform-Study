@@ -6,6 +6,14 @@ variable "vpc_name" {
   type = string
   default = "hyun6ik-default"
 }
+
+locals {
+  common_tags = {
+    Project = "Network"
+    Owner = "hyun6ik"
+  }
+}
+
 module "vpc" {
   source = "tedilabs/network/aws//modules/vpc"
   version = "0.24.0"
@@ -21,7 +29,7 @@ module "vpc" {
   # DNS Support 활성화
   dns_support_enabled = true
 
-  tags = {}
+  tags = local.common_tags
 }
 
 module "subnet_group__public" {
@@ -44,7 +52,7 @@ module "subnet_group__public" {
     }
   }
 
-  tags = {}
+  tags = local.common_tags
 }
 
 module "subnet_group__private" {
@@ -66,7 +74,8 @@ module "subnet_group__private" {
     }
   }
 
-  tags = {}
+  tags = local.common_tags
+
 }
 
 module "route_table__public" {
@@ -85,7 +94,8 @@ module "route_table__public" {
     }
   ]
 
-  tags= {}
+  tags = local.common_tags
+
 }
 
 module "route_table__private" {
@@ -99,5 +109,6 @@ module "route_table__private" {
 
   ipv4_routes = []
 
-  tags = {}
+  tags = local.common_tags
+
 }
