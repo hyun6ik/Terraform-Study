@@ -1,0 +1,17 @@
+vi ~/.terraformrc
+
+plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
+
+credentials "app.terraform.io" {
+  token = ""
+}
+
+
+
+
+
+
+
+
+# app.terraform.io
+user - USER SETTINGS -> Tokens -> Create API Token
