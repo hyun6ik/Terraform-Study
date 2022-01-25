@@ -1,0 +1,17 @@
+terraform state 명령어
+- * list : 현재 workspace가 관리중인 리소스 목록
+- * mv : terraform 코드를 리펙토링 하는 과정에서 주로 사용됨
+- pull : Remote State 저장소에서 상태를 Local로 다운 받을 때 사용
+- push : Local 상태를 Remote State 저장소에 덮어 쓸 때 사용 (위험함!!)
+- replace-provider
+- * rm : 상태 저장소에서 해당 상태를 제거한다. (리소스는 유지하지만 더이상 테라폼으로 관리하지 않는 경우)
+ex) 권한관리를 Terraform으로 관리하고 있다가 다른 곳으로 Migration 하고 싶을 때
+- show : 해당 리소스에 저장된 상태를 terraform 코드로 나타냄
+
+
+terraform state mv 'aws_iam_group_developer' 'aws_iam_group.this["developer"]'
+
+terrafrom state rm 'aws_iam_user_policy_attachment.developer["alice"]'
+terrafrom state rm 'aws_iam_user_policy_attachment.developer["tony"]'
+
+terraform state pull > a.tfstate
