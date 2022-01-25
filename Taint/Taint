@@ -1,0 +1,17 @@
+# 가정 : AWS의 인터넷 게이트웨이에 장애가 생겨서 교체해야할 일이 발생했다.
+module.vpc.aws_internet_gateway.this[0]
+
+terraform taint "module.vpc.aws_internet_gateway.this[0]"
+terrafrom apply을 하면 인터넷 게이트웨이를 replace 해준다.
+
+인터넷 게이트웨이가 replace되면서 id도 교체된다.
+따라서 Taint된 인터넷 게이트웨이와 의존성이 있는 Child 리소스들도 교체가 된다.
+
+taint를 풀고 싶으면 untaint 명령어를 사용하며 된다.
+terraform untaint "module.vpc.aws_internet_gateway.this[0]"
+
+Taint는 여러 리소스들도 한번에 할 수 있다.
+
+-replace resource 명령어로 리소스를 교체할 수 있다.
+terraform apply -replace "module.vpc.aws_internet_gateway.this[0]"
+
