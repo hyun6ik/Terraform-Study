@@ -1,0 +1,20 @@
+# Terraform Workspace 명령어
+- delete : 워크스페이스 삭제하기
+- list : 전체 워크스페이스 목록 조회
+- new : 새로운 워크스페이스 생성
+- select : 해당하는 워크스페이스로 돌아가기
+- show : 현재 작업하고 있는 워크스페이스가 무엇인지 확인
+
+# terraform.tfstate.d :
+Workspace 기능을 사용하게 되면 해당 코드에서 여러 테라폼 Workspace를 관리하기 때문에
+Workspace의 상태 파일도 여러개다.
+.d 디렉토리 내에 각각 Workspace에 해당하는 테라폼 state 파일을 확인할 수 있다.
+
+# Workspace 별로 변수 파일 적용하기
+terraform apply -var-file=dev.tfvars
+terraform apply -var-file=prod.tfvars
+terraform apply -var-file=staging.tfvars
+
+# 주의사항
+Terraform Cloud Remote backend를 이용할 때
+Workspace기능이 다르게 동작한다.
