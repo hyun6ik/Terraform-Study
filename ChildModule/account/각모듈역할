@@ -1,0 +1,4 @@
+main.tf = resource / data / module / local
+outputs.tf = output
+variables.tf = variable
+versions.tf = provider / module 버전 의존성성
