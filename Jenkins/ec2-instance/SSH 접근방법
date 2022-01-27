@@ -1,0 +1,3 @@
+vi ~/.ssh/config
+
+HostName에 Bastion Public IP로 수정하기
