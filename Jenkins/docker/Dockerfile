@@ -14,6 +14,6 @@ RUN chmod +x /install_aws.sh && \
 
 # set jenkins user to host docker group
 RUN /usr/sbin/groupadd -g ${DOCKER_GID:-1000} -f docker && \
-    /user/sbin/usermod -aG docker jenkins
+    /usr/sbin/usermod -aG docker jenkins
 
 USER jenkins
