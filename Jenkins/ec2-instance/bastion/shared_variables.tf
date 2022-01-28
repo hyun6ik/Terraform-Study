@@ -1,5 +1,5 @@
 variable "backend_s3" {
-  default = "hyun6ik-terraform-backend"
+  default = "hyun6ik-backend"
 }
 
 variable "region" {
