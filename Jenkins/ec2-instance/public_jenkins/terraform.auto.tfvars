@@ -1,5 +1,5 @@
 env = "dev"
-name = "bastion"
+name = "jenkins"
 owner = "hyun6ik"
 tags = {}
 

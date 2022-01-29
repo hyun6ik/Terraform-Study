@@ -12,6 +12,7 @@ module "ec2" {
   iam_instance_profile = module.iam.iam_instance_profile_name
   associate_public_ip_address = true
 
+  user_data  = data.template_file.userdata.rendered
   tags = local.tags
 }
 
