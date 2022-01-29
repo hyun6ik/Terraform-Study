@@ -2,6 +2,7 @@ locals {
   region = var.region
 
   ec2_name = format("%s-ec2", var.name)
+  role_name = format("%s-role", var.name)
   ssh_sg_name = format("%s-ssh-sg", var.name)
   http_sg_name = format("%s-http-sg", var.name)
 
@@ -22,5 +23,8 @@ locals {
   ssh_ingress_cidr_blocks = var.ssh_ingress_cidr_blocks
   ssh_ingress_rules = var.ssh_ingress_rules
   ssh_egress_rules = var.ssh_egress_rules
+
+  trusted_role_services = var.trusted_role_services
+  custom_role_policy_arns = var.custom_role_policy_arns
 
 }

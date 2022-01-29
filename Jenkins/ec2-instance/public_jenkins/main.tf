@@ -9,6 +9,7 @@ module "ec2" {
   availability_zone = element(local.azs, 0)
   subnet_id = element(local.public_subnet_ids, 0)
   vpc_security_group_ids = [module.ssh.security_group_id, local.default_sg_id]
+  iam_instance_profile = module.iam.iam_instance_profile_name
   associate_public_ip_address = true
 
   tags = local.tags
@@ -27,4 +28,17 @@ module "ssh" {
   egress_rules = local.ssh_egress_rules
 
   tags = local.tags
+}
+
+module "iam" {
+  source = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
+  version = "~> 4.3"
+
+  create_role = true
+  create_instance_profile = true
+  role_name = local.role_name
+  role_requires_mfa = false
+
+  trusted_role_services = local.trusted_role_services
+  custom_role_policy_arns = local.custom_role_policy_arns
 }
